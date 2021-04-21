@@ -1,4 +1,4 @@
 import asyncHandler from 'express-async-handler'
-import Article from './articleModel.js'
+import Article from '../models/articleModel.js'
 
 export const fetchArticles = () => {}
