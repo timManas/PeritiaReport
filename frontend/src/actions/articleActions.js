@@ -8,10 +8,8 @@ import axios from 'axios'
 export const listArticles = () => async (dispatch) => {
   try {
     dispatch({ type: ARTICLE_LIST_REQUEST })
-
     const { data } = await axios.get('/api/articles')
-    console.log('ListArticles: ' + JSON.stringify(data))
-    dispatch({ type: ARTICLE_LIST_SUCCESS })
+    dispatch({ type: ARTICLE_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
       type: ARTICLE_LIST_FAIL,

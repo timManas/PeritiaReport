@@ -4,7 +4,7 @@ import {
   ARTICLE_LIST_SUCCESS,
 } from '../constants/articleConstants'
 
-export const articleListReducer = (state = { article: [] }, action) => {
+export const articleListReducer = (state = { articles: [] }, action) => {
   switch (action.type) {
     case ARTICLE_LIST_REQUEST:
       return state
