@@ -2,6 +2,8 @@ import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
+import articleRoutes from './routes/articleRoutes.js'
 
 // Initialize Dot Env File
 dotenv.config()
@@ -26,7 +28,14 @@ const connectDB = async () => {
 
 // Connect Backend to MongoDB
 connectDB()
+
+// Run Morgan in developmenet Mode
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
 app.use(express.json())
+app.use('/api/articles', articleRoutes)
 
 // Routes for paypal req/res
 app.get(
