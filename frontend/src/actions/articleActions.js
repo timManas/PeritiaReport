@@ -9,6 +9,7 @@ export const listArticles = () => async (dispatch) => {
   try {
     dispatch({ type: ARTICLE_LIST_REQUEST })
     const { data } = await axios.get('/api/articles')
+
     dispatch({ type: ARTICLE_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
