@@ -87,3 +87,5 @@ const articles = [
       'https://www.finextra.com/pressarticle/87165/taurus-receives-finma-approval-for-launch-of-digital-asset-exchange',
   },
 ]
+
+export default articles
