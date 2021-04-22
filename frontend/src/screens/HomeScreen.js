@@ -23,11 +23,6 @@ const HomeScreen = () => {
           </Col>
         ))}
       </Row>
-      <script
-        data-ad-client='ca-pub-1371079713669867'
-        async
-        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-      ></script>
     </>
   )
 }
