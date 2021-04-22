@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 import articles from './data/articles.js'
 import Article from './models/articleModel.js'
 
-dotenv.config() // initialize .env so we can use it
+// initialize .env so we can use it
+dotenv.config()
 
 const connectDB = async () => {
   try {
@@ -18,13 +19,13 @@ const connectDB = async () => {
     process.exit(1) // exit(1) - means you return with error
   }
 }
-connectDB() // initialize DB connection
 
-const importData = async () => {
+const importData = async (articles) => {
+  const data = articles
   try {
     // Clear all existing data
     await Article.deleteMany() // We use await since this returns a promise
-    const createdArticle = await Article.insertMany(articles) // insertMany returns a list
+    const createdArticle = await Article.insertMany(data) // insertMany returns a list
     console.log('Data Imported!')
     process.exit()
   } catch (error) {
@@ -45,8 +46,13 @@ const destroyData = async () => {
   }
 }
 
+// const createData = () => {}
+
+// initialize DB connection
+connectDB()
+
 if (process.argv[2] === '-d') {
   destroyData()
 } else {
-  importData()
+  importData(articles)
 }

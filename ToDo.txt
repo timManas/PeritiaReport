@@ -1,0 +1,7 @@
+List of items to do 
+
+1. Modify data coming in so it fetches from:
+HackerNews
+2. Push to Heroku
+2. Create Heroku Login for paid User
+3. Enroll into Adsense program
