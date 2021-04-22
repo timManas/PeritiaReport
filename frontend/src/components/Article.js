@@ -16,12 +16,12 @@ const Article = ({ article }) => {
         }}
       >
         <Card.Header>
-          <a href={article.url} className='text-white'>
+          <a href={article.url} target='_blank' className='text-white'>
             <h5>{article.title}</h5>
           </a>
         </Card.Header>
         <Card.Body>
-          <a href={article.url}>
+          <a href={article.url} target='_blank'>
             <Card.Text>{article.url}</Card.Text>
             <Card.Text>{formatDate(article.time)}</Card.Text>
           </a>

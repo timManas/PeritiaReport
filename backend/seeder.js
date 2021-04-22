@@ -49,26 +49,29 @@ const destroyData = async () => {
 
 const createData = async () => {
   try {
-    const topArticles = await axios.get(
+    let topArticles = await axios.get(
       'https://hacker-news.firebaseio.com/v0/topstories.json'
     )
 
-    // const newArticles = await axios.get(
-    //   'https://hacker-news.firebaseio.com/v0/newstories.json'
-    // )
+    let newArticles = await axios.get(
+      'https://hacker-news.firebaseio.com/v0/newstories.json'
+    )
 
     // const bestArticles = await axios.get(
     //   'https://hacker-news.firebaseio.com/v0/beststories.json'
     // )
 
-    // console.log('Top: ' + JSON.stringify(topArticles.data))
-    // console.log('New: ' + JSON.stringify(newArticles.data))
+    const topArticleList = await createList(topArticles.data)
+    // const newArticleList = await createList(newArticles.data)
+    // console.log('Top: ' + JSON.stringify(topArticleList))
+    // console.log('New: ' + JSON.stringify(newArticleList))
     // console.log('Best: ' + JSON.stringify(bestArticles.data))
 
-    const articles = createList(topArticles.data)
-    return articles
+    return topArticleList
+    // const list = [](await list.concat(topArticleList, newArticleList))
+    // return list
   } catch (error) {
-    console.log(`${error}`.red.inverse)
+    console.log(`${error}`)
     process.exit(1)
   }
 }
@@ -98,7 +101,8 @@ const createList = async (topArticles) => {
         'bitcoin',
         'ethereum',
         'doge',
-        'blockchain'
+        'blockchain',
+        'coinbase'
       )
     ) {
       const newData = {
@@ -113,7 +117,7 @@ const createList = async (topArticles) => {
   }
 
   console.log('Finished Fetching')
-  console.log('ListArticles: ' + JSON.stringify(list))
+  console.log('ListArticles: ' + JSON.stringify(list) + '\n')
 
   return list
 }
